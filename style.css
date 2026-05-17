@@ -891,8 +891,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   flex-shrink: 0;
+}
+
+.footer-contact-icon svg {
+  display: block;
 }
 
 .footer-contact-text {
