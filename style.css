@@ -210,6 +210,160 @@ img {
   margin-top: 20px;
 }
 
+/* Banner de Promociones */
+.promo-banner {
+  padding: 40px 20px 60px;
+  background: linear-gradient(180deg, #fff7f9 0%, var(--soft-rose) 100%);
+}
+
+.promo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.promo-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(246, 91, 138, 0.12);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-pink), var(--button-pink));
+}
+
+.promo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(246, 91, 138, 0.2);
+}
+
+.promo-card.secondary {
+  background: linear-gradient(135deg, var(--primary-pink), var(--button-pink));
+  color: white;
+}
+
+.promo-card.secondary::before {
+  background: white;
+}
+
+.promo-card.secondary .promo-badge {
+  background: gold;
+  color: #333;
+}
+
+.promo-card.secondary .promo-title,
+.promo-card.secondary .promo-subtitle,
+.promo-card.secondary .promo-description {
+  color: white;
+}
+
+.promo-card.secondary .promo-button {
+  background: white;
+  color: var(--primary-pink);
+}
+
+.promo-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary-pink);
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.promo-content {
+  flex: 1;
+}
+
+.promo-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-pink);
+  margin-bottom: 5px;
+}
+
+.promo-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.promo-code {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  color: var(--primary-pink);
+  font-weight: 600;
+  background: var(--soft-rose);
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.promo-description {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: var(--primary-pink);
+  font-weight: 600;
+}
+
+.promo-button {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--primary-pink);
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.promo-button:hover {
+  background: var(--button-pink);
+  transform: scale(1.05);
+}
+
+.promo-image {
+  font-size: 50px;
+  flex-shrink: 0;
+}
+
+/* Responsive promo */
+@media (max-width: 1024px) {
+  .promo-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .promo-card {
+    padding: 20px;
+  }
+}
+
 .btn-primary {
   border: none;
   padding: 13.8px 20px;
@@ -801,6 +955,10 @@ img {
 .social-link:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(246, 91, 138, 0.4);
+}
+
+.social-link svg {
+  display: block;
 }
 
 .footer-bottom {
