@@ -217,10 +217,10 @@ img {
 }
 
 .promo-container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 25px;
 }
 
@@ -1158,11 +1158,11 @@ img {
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 25px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
   padding-bottom: 25px;
   border-bottom: 1px solid rgba(246, 91, 138, 0.15);
 }
@@ -1964,5 +1964,32 @@ html {
   .contact-option {
     flex: 1;
     min-width: 140px;
+  }
+  
+  /* Footer responsive */
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  
+  .footer-logo {
+    justify-content: center;
+  }
+  
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-contact-item {
+    justify-content: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
   }
 }
