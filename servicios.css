@@ -1,0 +1,258 @@
+.services-hero {
+  padding: 120px 20px 80px;
+  background: linear-gradient(180deg, #fff7f9 0%, var(--soft-rose) 100%);
+  text-align: center;
+}
+
+.services-hero-title {
+  font-family: "Allura", cursive;
+  font-size: 60px;
+  color: var(--primary-pink);
+  margin-bottom: 15px;
+}
+
+.services-hero-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: var(--dark-brown);
+}
+
+.services-detail {
+  padding: 60px 20px;
+  background: white;
+}
+
+.services-detail-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.service-detail-card {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(246, 91, 138, 0.1);
+}
+
+.service-detail-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.service-detail-image {
+  flex: 1;
+  height: 350px;
+}
+
+.service-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-detail-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.service-detail-badge {
+  font-size: 50px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.service-detail-title {
+  font-family: "Allura", cursive;
+  font-size: 42px;
+  color: var(--primary-pink);
+  margin-bottom: 15px;
+}
+
+.service-detail-description {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.service-detail-includes {
+  margin-bottom: 25px;
+}
+
+.service-detail-includes h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-brown);
+  margin-bottom: 15px;
+}
+
+.service-detail-includes ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.service-detail-includes li {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-detail-includes li::before {
+  content: '✓';
+  color: var(--primary-pink);
+  font-weight: bold;
+}
+
+.service-detail-price {
+  margin-bottom: 25px;
+}
+
+.price-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #888;
+  margin-right: 8px;
+}
+
+.price-value {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-pink);
+}
+
+.service-detail-button {
+  display: inline-block;
+  padding: 15px 35px;
+  background: var(--primary-pink);
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.service-detail-button:hover {
+  background: var(--button-pink);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(246, 91, 138, 0.3);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--primary-pink), var(--button-pink));
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-family: "Allura", cursive;
+  font-size: 45px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.cta-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 15px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: var(--primary-pink);
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-button.secondary:hover {
+  background: white;
+  color: var(--primary-pink);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .service-detail-card,
+  .service-detail-card.reverse {
+    flex-direction: column;
+  }
+  
+  .service-detail-image {
+    width: 100%;
+    height: 250px;
+  }
+  
+  .service-detail-content {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-hero {
+    padding: 100px 20px 60px;
+  }
+  
+  .services-hero-title {
+    font-size: 45px;
+  }
+  
+  .service-detail-includes ul {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-detail-price {
+    text-align: center;
+  }
+  
+  .service-detail-button {
+    width: 100%;
+    text-align: center;
+  }
+}
