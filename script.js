@@ -272,6 +272,6 @@ if (particlesContainer) {
         particle.style.animationDuration = duration + 's';
         particle.style.animationDelay = delay + 's';
         
-        particlesContainer.appendChild(particle);
+        particlesContainer.appendChild(particle);       
     }
 }

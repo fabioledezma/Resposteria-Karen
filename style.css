@@ -57,7 +57,7 @@
 }
 
 .header.scrolled .navbar {
-  padding: 15px 40px;
+  padding: 22px 40px;
 }
 
 body {
@@ -148,6 +148,7 @@ img {
   display: flex;
   justify-content: space-between;
   padding: 50px 130px;
+  gap: 40px;
 }
 
 .hero-content {
@@ -1211,7 +1212,7 @@ img {
 }
 
 .contact-option.email:hover {
-  background: #EA4335;
+background: #5b7cfa;
 }
 
 .contact-option.email:hover .contact-text p,
@@ -1271,257 +1272,266 @@ img {
   transform: translateY(-2px);
 }
 
-/* Footer */
-.footer {
-  background: linear-gradient(180deg, #fff7f9 0%, #fdeeef 100%);
-  border-top: 2px solid var(--primary-pink);
-  padding: 40px 20px 25px;
-  margin-top: 60px;
-  position: relative;
-}
+/* =========================
+   FOOTER
+========================= */
 
-.footer::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--primary-pink) 20%, 
-    var(--button-pink) 50%, 
-    var(--primary-pink) 80%, 
-    transparent 100%
-  );
-  border-radius: 50%;
-  opacity: 0.6;
-  transform: scaleY(0.4);
+.footer {
+  background: #fff;
+  border-top: 1px solid #f1f1f1;
+  padding: 80px 8% 30px;
+  font-family: "Poppins", sans-serif;
 }
 
 .footer-container {
-  max-width: 1400px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid rgba(246, 91, 138, 0.15);
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px;
 }
 
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+/* =========================
+   BRAND
+========================= */
 
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .footer-logo-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--primary-pink), var(--button-pink));
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #f65b8a, #ff8fb1);
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0 10px 25px rgba(246, 91, 138, 0.25);
 }
 
 .footer-brand h3 {
-  font-family: "Allura", cursive;
-  font-size: 26px;
-  color: var(--dark-brown);
-  margin: 0;
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.footer-brand span {
+  color: #888;
+  font-size: 13px;
 }
 
 .footer-brand p {
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
   color: #666;
-  line-height: 1.5;
+  line-height: 1.7;
+  font-size: 14px;
+  max-width: 320px;
 }
 
-.footer-brand .footer-tagline {
+.footer-tagline {
+  margin-top: 18px;
   color: var(--primary-pink);
   font-style: italic;
-  font-size: 13px;
-  margin-top: 8px;
 }
 
+/* =========================
+   TITLES
+========================= */
+
 .footer-section h4 {
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--dark-brown);
-  margin-bottom: 15px;
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 22px;
   position: relative;
-  padding-bottom: 8px;
 }
 
 .footer-section h4::after {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: 0;
   left: 0;
-  width: 40px;
-  height: 2px;
+  bottom: -8px;
+  width: 35px;
+  height: 3px;
   background: var(--primary-pink);
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
-.footer-section h4:empty::after {
-  display: none;
-}
+/* =========================
+   LINKS
+========================= */
 
 .footer-links {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .footer-links li {
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .footer-links a {
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
-  color: #666;
   text-decoration: none;
-  transition: color 0.3s ease, padding-left 0.3s ease;
+  color: #666;
+  transition: 0.3s ease;
+  font-size: 14px;
 }
 
 .footer-links a:hover {
   color: var(--primary-pink);
-  padding-left: 5px;
+  padding-left: 6px;
 }
 
-.footer-contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
-}
+/* =========================
+   CONTACT
+========================= */
 
-.footer-contact-icon {
-  width: 28px;
-  height: 28px;
-  background: var(--soft-rose);
-  border-radius: 6px;
+.footer-contact p {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.footer-contact-icon svg {
-  display: block;
-}
-
-.footer-contact-text {
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
+  gap: 10px;
+  margin-bottom: 16px;
   color: #666;
-  line-height: 1.4;
+  font-size: 14px;
 }
 
-.footer-contact-text strong {
-  color: var(--dark-brown);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.footer-schedule {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.footer-schedule-item {
-  display: flex;
-  justify-content: space-between;
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
-  color: #666;
-  padding: 6px 10px;
-  background: rgba(246, 91, 138, 0.05);
-  border-radius: 6px;
-}
-
-.footer-schedule-item .day {
-  font-weight: 500;
-  color: var(--dark-brown);
-}
-
-.footer-schedule-item .time {
+.footer-contact i {
   color: var(--primary-pink);
+  font-size: 16px;
 }
+
+/* =========================
+   SOCIAL
+========================= */
 
 .social-icons {
   display: flex;
-  gap: 8px;
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .social-link {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--primary-pink), var(--button-pink));
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+  font-size: 20px;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
 }
+
+/* EFECTO GLOW */
+
+.social-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  transform: scale(0);
+  border-radius: inherit;
+  transition: 0.4s ease;
+}
+
+.social-link:hover::before {
+  transform: scale(1.8);
+}
+
+/* HOVER */
 
 .social-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(246, 91, 138, 0.4);
+  transform: translateY(-7px) scale(1.08);
 }
 
-.social-link svg {
-  display: block;
+/* ICONO */
+
+.social-link i {
+  position: relative;
+  z-index: 2;
 }
+
+/* COLORES */
+
+.whatsapp {
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+}
+
+.instagram {
+  background: linear-gradient(135deg, #ff4d8d, #c13584);
+  box-shadow: 0 10px 20px rgba(225, 48, 108, 0.25);
+}
+
+.facebook {
+  background: linear-gradient(135deg, #1877F2, #0f5fd1);
+  box-shadow: 0 10px 20px rgba(24, 119, 242, 0.25);
+}
+
+.tiktok {
+  background: linear-gradient(135deg, #222, #000);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   BOTTOM
+========================= */
 
 .footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  margin-top: 60px;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+  text-align: center;
 }
 
 .footer-bottom p {
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
   color: #888;
-  margin: 0;
+  font-size: 14px;
 }
 
-.footer-bottom-links {
-  display: flex;
-  gap: 15px;
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
 }
 
-.footer-bottom-links a {
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
-  color: #888;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+@media (max-width: 768px) {
 
-.footer-bottom-links a:hover {
-  color: var(--primary-pink);
+  .footer {
+    padding: 60px 6% 25px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-brand p {
+    margin: auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
 }
 
 /* Animaciones */
