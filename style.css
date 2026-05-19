@@ -1213,70 +1213,51 @@ img {
 }
 
 /* ============================================
-   GRID DE TESTIMONIOS CON ANIMACIÓN SUAVE
+   CARRUSEL DE TESTIMONIOS AUTOMÁTICO
    ============================================ */
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+.testimonials-carousel {
+  overflow: hidden;
+  width: 100%;
 }
 
-/* Animación suave de respiración para cada card */
-@keyframes breathe {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: scroll-left 20s linear infinite;
 }
 
-/* Aplicar animación con delay diferente a cada card */
-.testimonials-grid .testimonial-card:nth-child(1) {
-  animation: breathe 4s ease-in-out infinite;
-}
-
-.testimonials-grid .testimonial-card:nth-child(2) {
-  animation: breathe 4s ease-in-out infinite;
-  animation-delay: 0.5s;
-}
-
-.testimonials-grid .testimonial-card:nth-child(3) {
-  animation: breathe 4s ease-in-out infinite;
-  animation-delay: 1s;
-}
-
-.testimonials-grid .testimonial-card:nth-child(4) {
-  animation: breathe 4s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
-.testimonials-grid .testimonial-card:nth-child(5) {
-  animation: breathe 4s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.testimonials-grid .testimonial-card:nth-child(6) {
-  animation: breathe 4s ease-in-out infinite;
-  animation-delay: 2.5s;
-}
-
-/* Hover pausa la animación */
-.testimonial-card:hover {
+/* Pausar animación al pasar el mouse */
+.testimonials-carousel:hover .carousel-track {
   animation-play-state: paused;
 }
 
-/* Responsive del grid */
-@media (max-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* Animación de movimiento suave hacia la izquierda */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 12.5px));
   }
 }
 
+/* Estilo de cada card en el carrusel */
+.carousel-track .testimonial-card {
+  width: 350px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(246, 91, 138, 0.1);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .carousel-track .testimonial-card {
+    width: 280px;
   }
 }
 
