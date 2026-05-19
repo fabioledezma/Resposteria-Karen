@@ -1213,97 +1213,70 @@ img {
 }
 
 /* ============================================
-   SLIDER DE TESTIMONIOS
+   GRID DE TESTIMONIOS CON ANIMACIÓN SUAVE
    ============================================ */
 
-.testimonials-slider {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 0 10px;
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.testimonials-track {
-  display: flex;
-  gap: 25px;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  padding: 20px 0;
-  width: 100%;
-  min-height: 350px;
+/* Animación suave de respiración para cada card */
+@keyframes breathe {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-.testimonials-track .testimonial-card {
-  min-width: calc(33.333% - 17px);
-  max-width: calc(33.333% - 17px);
-  flex-shrink: 0;
+/* Aplicar animación con delay diferente a cada card */
+.testimonials-grid .testimonial-card:nth-child(1) {
+  animation: breathe 4s ease-in-out infinite;
 }
 
-/* Botones de navegación del slider */
-.slider-btn-testimonial {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid var(--soft-rose);
-  color: var(--primary-pink);
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  z-index: 10;
+.testimonials-grid .testimonial-card:nth-child(2) {
+  animation: breathe 4s ease-in-out infinite;
+  animation-delay: 0.5s;
 }
 
-.slider-btn-testimonial:hover {
-  background: var(--primary-pink);
-  color: white;
-  border-color: var(--primary-pink);
-  transform: scale(1.1);
+.testimonials-grid .testimonial-card:nth-child(3) {
+  animation: breathe 4s ease-in-out infinite;
+  animation-delay: 1s;
 }
 
-/* Puntos indicadores del slider */
-.testimonials-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
+.testimonials-grid .testimonial-card:nth-child(4) {
+  animation: breathe 4s ease-in-out infinite;
+  animation-delay: 1.5s;
 }
 
-.testimonial-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--soft-rose);
-  cursor: pointer;
-  transition: all 0.3s ease;
+.testimonials-grid .testimonial-card:nth-child(5) {
+  animation: breathe 4s ease-in-out infinite;
+  animation-delay: 2s;
 }
 
-.testimonial-dot.active,
-.testimonial-dot:hover {
-  background: var(--primary-pink);
-  transform: scale(1.2);
+.testimonials-grid .testimonial-card:nth-child(6) {
+  animation: breathe 4s ease-in-out infinite;
+  animation-delay: 2.5s;
 }
 
-/* Responsive del slider */
+/* Hover pausa la animación */
+.testimonial-card:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive del grid */
 @media (max-width: 1024px) {
-  .testimonials-track .testimonial-card {
-    min-width: calc(50% - 13px);
-    max-width: calc(50% - 13px);
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .testimonials-track .testimonial-card {
-    min-width: 100%;
-    max-width: 100%;
-  }
-  
-  .slider-btn-testimonial {
-    display: none;
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
 }
 
