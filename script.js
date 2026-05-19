@@ -310,3 +310,16 @@ if (particlesContainer) {
         particlesContainer.appendChild(particle);       
     }
 }
+
+
+// ============================================
+// 10. AÑO DINÁMICO DEL COPYRIGHT
+// ============================================
+// Actualiza automáticamente el año en el footer
+
+const footerBottom = document.querySelector('.footer-bottom p');
+
+if (footerBottom) {
+    const currentYear = new Date().getFullYear();
+    footerBottom.textContent = `© ${currentYear} Repostería Karen • Todos los derechos reservados`;
+}
