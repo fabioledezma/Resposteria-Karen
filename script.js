@@ -816,13 +816,21 @@ function actualizarDotsTestimonios() {
     });
 }
 
+// Hacer funciones globales para que funcionen con onclick
+window.moverTestimonial = function(direccion) {
+    moverTestimonial(direccion);
+};
+
+window.irATestimonial = function(slide) {
+    irATestimonial(slide);
+};
+
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    // Pequeño delay para asegurar que todo esté cargado
-    setTimeout(inicializarSlider, 100);
+    setTimeout(inicializarSlider, 200);
 });
 
 // También intentar si ya está cargado
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(inicializarSlider, 100);
+    setTimeout(inicializarSlider, 200);
 }

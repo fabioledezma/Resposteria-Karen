@@ -1231,6 +1231,7 @@ img {
   scroll-behavior: smooth;
   padding: 20px 0;
   width: 100%;
+  min-height: 350px;
 }
 
 .testimonials-track .testimonial-card {
