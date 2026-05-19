@@ -589,11 +589,33 @@ img {
   animation: float-gentle 3s ease-in-out infinite;
 }
 
-/* Diseño del reverso - Tarjeta 2 (tortas) - Rosa champagne/dorado */
+/* Diseño del reverso - Tarjeta 2 (tortas) - Rosa con estrellitas */
 .promo-card-container:last-child .promo-card.back {
-  background: linear-gradient(145deg, #d4a574 0%, #c9956a 30%, #e8b886 60%, #fff5e6 100%);
-  box-shadow: 0 20px 50px rgba(212, 165, 116, 0.35);
+  background: linear-gradient(145deg, #ff9eb5 0%, #f65b8a 30%, #e84e7a 60%, #ffcce0 100%);
+  box-shadow: 0 20px 50px rgba(246, 91, 138, 0.35);
   border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Estrellitas iluminantes de fondo */
+.promo-card-container:last-child .promo-card.back::before {
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.8) 0%, transparent 3%),
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 2%),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.7) 0%, transparent 2.5%),
+    radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.5) 0%, transparent 2%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 2%),
+    radial-gradient(circle at 90% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 1.5%),
+    radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.5) 0%, transparent 2%);
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .promo-card-container:last-child .back-decoration {
