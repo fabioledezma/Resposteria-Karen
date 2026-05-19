@@ -97,16 +97,35 @@ animateElements.forEach(el => {
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
+    // Agregar clase de error visual cuando el campo no es válido
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+        // Cuando el campo pierde el foco, validar si está vacío
+        input.addEventListener('blur', function() {
+            if (!this.value.trim()) {
+                this.classList.add('input-error');
+            } else {
+                this.classList.remove('input-error');
+            }
+        });
+        
+        // Quitar el error cuando el usuario empieza a escribir
+        input.addEventListener('input', function() {
+            this.classList.remove('input-error');
+        });
+    });
+
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Evita que se envíe realmente (recargue la página)
 
-        // Obtener los valores del formulario
-        const nombre = document.querySelector('.form-input[type="text"]').value.trim();
-        const telefono = document.querySelector('.form-input[type="tel"]').value.trim();
-        const email = document.querySelector('.form-input[type="email"]').value.trim();
-        const mensaje = document.querySelector('.form-textarea').value.trim();
+        // Obtener los valores del formulario usando los IDs que agregamos
+        const nombre = document.getElementById('nombre').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
 
-        // Validación básica: todos los campos deben estar llenos
+        // Validación: todos los campos deben estar llenos
         if (!nombre || !telefono || !email || !mensaje) {
             alert('Por favor, completa todos los campos.');
             return;
@@ -125,7 +144,7 @@ if (contactForm) {
         }
 
         // Si todo está bien, mostrar mensaje de éxito
-        // En un caso real, esto enviaría los datos a un servidor
+        // NOTA: En un caso real, esto enviaría los datos a un servidor
         alert(`¡Gracias ${nombre}! Tu mensaje ha sido enviado. Nos contactaremos pronto a ${telefono} o ${email}.`);
 
         // Limpiar el formulario
@@ -138,19 +157,35 @@ if (contactForm) {
 // 5. EFECTO EN LOS BOTONES DE PRODUCTOS
 // ============================================
 // Agrega una acción cuando alguien hace click en "Pedir"
+// Envía un mensaje a WhatsApp con el nombre del producto
 
 const productButtons = document.querySelectorAll('.product_button');
 
 productButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Obtener el nombre del producto
-        const productCard = button.closest('.product_card');
+    button.addEventListener('click', function() {
+        // Obtener el nombre del producto desde la tarjeta
+        const productCard = this.closest('.product_card');
         const productName = productCard.querySelector('.product_name').textContent;
-
-        // Mostrar mensaje (aquí podría ir a WhatsApp con el producto)
-        // Puedes cambiar el número por el real
+        
+        // Guardar el texto original del botón
+        const textoOriginal = this.textContent;
+        
+        // Mostrar feedback visual: cambiar a "Enviando..."
+        this.textContent = 'Enviando...';
+        this.disabled = true;
+        
+        // Crear mensaje para WhatsApp
         const mensaje = encodeURIComponent(`Hola, me interesa el producto: ${productName}`);
+        
+        // Abrir WhatsApp con el mensaje
+        // IMPORTANTE: Cambia el número al real de la negocio
         window.open(`https://wa.me/573001234567?text=${mensaje}`, '_blank');
+        
+        // Restaurar el botón después de 2 segundos
+        setTimeout(() => {
+            this.textContent = textoOriginal;
+            this.disabled = false;
+        }, 2000);
     });
 });
 
