@@ -393,7 +393,7 @@ img {
   overflow: hidden;
 }
 
-.promo-card::before {
+.promo-card.front::before {
   content: "";
   position: absolute;
   top: 0;
@@ -509,6 +509,137 @@ img {
 .promo-image {
   font-size: 60px;
   flex-shrink: 0;
+}
+
+/* ============================================
+   TARJETAS PROMO CON ANIMACIÓN DE VOLTEO
+   ============================================ */
+
+.promo-card-container {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.promo-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.promo-card-container:hover .promo-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Estilos del frente (front) - ya existentes */
+.promo-card.front {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Estilos del reverso (back) */
+.promo-card.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+/* Diseño elegante del reverso - Tarjeta 1 (descuento) */
+.promo-card-container:first-child .promo-card.back {
+  background: linear-gradient(135deg, #f65b8a 0%, #ff8fb1 50%, #f9c8d3 100%);
+  box-shadow: 0 15px 40px rgba(246, 91, 138, 0.4);
+}
+
+.promo-card-container:first-child .back-decoration {
+  color: white;
+  font-size: 60px;
+  margin-bottom: 15px;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Diseño elegante del reverso - Tarjeta 2 (tortas) */
+.promo-card-container:last-child .promo-card.back {
+  background: linear-gradient(135deg, #3d2418 0%, #5a3d2b 50%, #8b6914 100%);
+  box-shadow: 0 15px 40px rgba(61, 36, 24, 0.4);
+}
+
+.promo-card-container:last-child .back-decoration {
+  color: #ffd700;
+  font-size: 60px;
+  margin-bottom: 15px;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Contenido del reverso */
+.back-content h4 {
+  font-family: 'Allura', cursive;
+  font-size: 32px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.back-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 15px;
+}
+
+.back-sparkles {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  font-size: 24px;
+  animation: sparkle-dance 1.5s ease-in-out infinite;
+}
+
+/* Animaciones del reverso */
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+  }
+}
+
+@keyframes sparkle-dance {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(5deg);
+  }
+}
+
+/* Agregar cursor pointer para indicar que es interactivo */
+.promo-card-container {
+  cursor: pointer;
 }
 
 /* Responsive promo */
