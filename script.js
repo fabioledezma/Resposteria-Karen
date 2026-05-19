@@ -409,3 +409,300 @@ function crearFooter() {
 
 // Ejecutar la función para crear el footer
 crearFooter();
+
+
+// ============================================
+// 12. CHAT FLOTANTE INTELIGENTE
+// ============================================
+// Chatbot que responde según lo que el usuario pregunte
+
+// Función para crear el chat flotante
+function crearChat() {
+    // Si ya existe, no crear otro
+    if (document.getElementById('chat-widget')) return;
+
+    // Crear el contenedor principal del chat
+    const chatContainer = document.createElement('div');
+    chatContainer.id = 'chat-widget';
+    chatContainer.innerHTML = `
+        <!-- Botón para abrir el chat -->
+        <button id="chat-toggle" class="chat-toggle">
+            <i class="bi bi-chat-dots-fill"></i>
+            <span class="chat-notification" id="chat-notification">1</span>
+        </button>
+
+        <!-- Ventana del chat -->
+        <div id="chat-window" class="chat-window">
+            <!-- Encabezado del chat -->
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <span class="chat-avatar">🍰</span>
+                    <div>
+                        <h4>Dulce Amor</h4>
+                        <span class="chat-status">En línea</span>
+                    </div>
+                </div>
+                <button id="chat-close" class="chat-close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mensajes del chat -->
+            <div id="chat-messages" class="chat-messages">
+                <div class="chat-message bot">
+                    <div class="message-content">
+                        ¡Hola! 👋 Bienvenido a Repostería Karen 🍰<br><br>
+                        Soy el asistente virtual de <strong>Dulce Amor</strong>.<br><br>
+                        ¿En qué puedo ayudarte hoy?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opciones rápidas -->
+            <div class="chat-options" id="chat-options">
+                <button class="chat-option" data-pregunta="precios">💰 Ver precios</button>
+                <button class="chat-option" data-pregunta="productos">🍰 Productos</button>
+                <button class="chat-option" data-pregunta="pedir">🛒 Hacer pedido</button>
+                <button class="chat-option" data-pregunta="contacto">📞 Contacto</button>
+            </div>
+
+            <!-- Input del usuario -->
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." />
+                <button id="chat-send" class="chat-send">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Insertar al final del body
+    document.body.appendChild(chatContainer);
+
+    // Agregar eventos
+    inicializarChat();
+}
+
+// Función que inicializa los eventos del chat
+function inicializarChat() {
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const chatClose = document.getElementById('chat-close');
+    const chatSend = document.getElementById('chat-send');
+    const chatInput = document.getElementById('chat-input');
+    const chatOptions = document.querySelectorAll('.chat-option');
+
+    // Abrir/cerrar chat
+    chatToggle.addEventListener('click', () => {
+        chatWindow.classList.add('active');
+        chatToggle.classList.add('hidden');
+        // Ocultar notificación
+        document.getElementById('chat-notification').style.display = 'none';
+    });
+
+    chatClose.addEventListener('click', () => {
+        chatWindow.classList.remove('active');
+        chatToggle.classList.remove('hidden');
+    });
+
+    // Enviar mensaje con botón
+    chatSend.addEventListener('click', () => procesarMensaje());
+
+    // Enviar mensaje con Enter
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') procesarMensaje();
+    });
+
+    // Opciones rápidas
+    chatOptions.forEach(opcion => {
+        opcion.addEventListener('click', () => {
+            const pregunta = opcion.dataset.pregunta;
+            agregarMensajeUsuario(opcion.textContent);
+            setTimeout(() => responder(pregunta), 500);
+        });
+    });
+}
+
+// Función para agregar mensaje del usuario
+function agregarMensajeUsuario(texto) {
+    const messagesContainer = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'chat-message user';
+    messageDiv.innerHTML = `<div class="message-content">${texto}</div>`;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Función para agregar respuesta del bot
+function agregarRespuestaBot(texto) {
+    const messagesContainer = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'chat-message bot';
+    messageDiv.innerHTML = `<div class="message-content">${texto}</div>`;
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Función principal que procesa el mensaje del usuario
+function procesarMensaje() {
+    const input = document.getElementById('chat-input');
+    const mensaje = input.value.trim().toLowerCase();
+
+    if (!mensaje) return;
+
+    // Agregar mensaje del usuario
+    agregarMensajeUsuario(input.value);
+    input.value = '';
+
+    // Procesar y responder después de un pequeño delay
+    setTimeout(() => {
+        const respuesta = obtenerRespuesta(mensaje);
+        agregarRespuestaBot(respuesta);
+    }, 600);
+}
+
+// Función que determina la respuesta según palabras clave
+function obtenerRespuesta(mensaje) {
+    // Palabras clave y sus respuestas
+    const respuestas = {
+        // SALUDOS
+        'saludo': `¡Qué alegría verte por aquí! 😊<br><br>
+        En <strong>Dulce Amor</strong> hacemos las tortas y cupcakes más ricos 🍰<br><br>
+        ¿Te gustaría ver nuestros productos o necesitas algo específico?`,
+
+        // PRECIOS
+        'precios': `💰 <strong>Algunos de nuestros precios:</strong><br><br>
+        • Pudín de Chocolate: <strong>$20.000</strong><br>
+        • Pudín de Fresa: <strong>$22.000</strong><br>
+        • Cupcakes Personalizados: <strong>$18.000</strong><br>
+        • Brownie con Nueces: <strong>$25.000</strong><br><br>
+        🧁 <strong>Tortas personalizadas:</strong> desde <strong>$80.000</strong><br><br>
+        ¿Te interesa algún producto en especial?`,
+
+        // PRODUCTOS
+        'productos': `🍰 <strong>Nuestros productos:</strong><br><br>
+        ✓ Tortas personalizadas para todo tipo de eventos<br>
+        ✓ Cupcakes decorados<br>
+        ✓ Pudines de chocolate y fresa<br>
+        ✓ Brownies con nueces<br>
+        ✓ Galletas artesanales<br><br>
+        📸 También puedes ver nuestra galería en la página principal.<br><br>
+        ¿Qué te gustaría pedir?`,
+
+        // PEDIDOS
+        'pedir': `🛒 ¡Perfecto! para hacer un pedido te contato directo por WhatsApp 💬<br><br>
+        <a href="https://wa.me/573006194301" target="_blank" style="background:#25D366;color:white;padding:10px 20px;border-radius:20px;text-decoration:none;display:inline-block;margin-top:10px;">
+        📱 Escribir por WhatsApp
+        </a><br><br>
+        O déjanos tu mensaje aquí y te contactamos pronto 😊`,
+
+        // CONTACTO
+        'contacto': `📞 <strong>联系我们 (Contáctanos):</strong><br><br>
+        📱 <strong>WhatsApp:</strong> +57 300 619 4301<br>
+        📧 <strong>Email:</strong> dulciamorkaren@gmail.com<br>
+        📍 <strong>Ubicación:</strong> Colombia<br><br>
+        <a href="https://wa.me/573006194301" target="_blank" style="background:#25D366;color:white;padding:10px 20px;border-radius:20px;text-decoration:none;display:inline-block;">
+        💬 Escribir por WhatsApp
+        </a>`,
+
+        // SERVICIOS
+        'servicios': `🎂 <strong>Nuestros servicios:</strong><br><br>
+        ✓ <strong>Bodas:</strong> Tortas de 1 a 5 pisos<br>
+        ✓ <strong>XV Años:</strong> Mesas de dulces temáticas<br>
+        ✓ <strong>Cumpleaños:</strong> Tortas infantiles y adultas<br>
+        ✓ <strong>Eventos:</strong> Baby showers, corporativo<br><br>
+        💰 Precios desde $80.000<br><br>
+        ¿Para qué evento necesitas?`,
+
+        // DÓNDE ESTÁN / UBICACIÓN
+        'ubicacion': `📍 Estamos en <strong>Colombia</strong> 🇨🇴<br><br>
+        Realizamos entregas en la zona y también puedes pasar a recoger tu pedido.<br><br>
+        ¿En qué ciudad te encuentras? Así te podemos informar mejor sobre entregas.`,
+
+        // HORARIO
+        'horario': `🕐 <strong>Horario de atención:</strong><br><br>
+        Lunes a Sábado: 9:00 AM - 6:00 PM<br>
+        Domingos: Solo con cita previa<br><br>
+        ¿En qué día te gustaría retirar tu pedido?`,
+
+        // AGRADECIMIENTOS
+        'gracias': `¡De nada! 😊<br><br>
+        En <strong>Dulce Amor</strong> nos gusta atender bien a todos nuestros clientes.<br><br>
+        ¿Hay algo más en lo que pueda ayudarte?`,
+
+        // DESPEDIDA
+        'despedida': `¡Que tengas un día muy dulce! 🍰<br><br>
+        Gracias por contactarnos. Cuando quieras volver, aquí-estamos 😊<br><br>
+        <strong>¡Endulzamos tus momentos especiales!</strong> ✨`,
+
+        // DEFAULT
+        'default': `¡Entendido! 😊<br><br>
+        No tengo información específica sobre eso, pero puedo ayudarte a contactar directamente con <strong>Dulce Amor</strong>.<br><br>
+        <a href="https://wa.me/573006194301" target="_blank" style="background:#25D366;color:white;padding:10px 20px;border-radius:20px;text-decoration:none;display:inline-block;">
+        💬 Escribir por WhatsApp
+        </a><br><br>
+        O escoge una opción:`,
+    };
+
+    // Detectar palabras clave en el mensaje
+    if (mensaje.match(/hola|buenos|buenas|saludos|hi|hello|que tal|que onda/i)) {
+        return respuestas.saludo;
+    }
+    if (mensaje.match(/precio|cuánto|cuesta|cost|valor|plata|precio/i)) {
+        return respuestas.precios;
+    }
+    if (mensaje.match(/producto|torta|cupcake|pudín|brownie|galleta|postre|menu|catálogo/i)) {
+        return respuestas.productos;
+    }
+    if (mensaje.match(/pedir|comprar|ordenar|quiero|adquirir|reservar/i)) {
+        return respuestas.pedir;
+    }
+       if (mensaje.match(/contacto|contactar|whatsapp|teléfono|celular|llamar|escribir/i)) {
+        return respuestas.contacto;
+    }
+    if (mensaje.match(/servicio|boda|xv|cumpleaños|evento|baby|corporativo/i)) {
+        return respuestas.servicios;
+    }
+    if (mensaje.match(/ubicación|donde|están|address|dónde están|ubicado/i)) {
+        return respuestas.ubicacion;
+    }
+    if (mensaje.match(/horario|hora|abierto|cerrado|atención/i)) {
+        return respuestas.horario;
+    }
+    if (mensaje.match(/gracias|thank|agradecido|te lo agradez|Muchas gracias/i)) {
+        return respuestas.gracias;
+    }
+    if (mensaje.match(/adiós|chao|bye|nos|voy|me voy|hasta luego|hasta pronto/i)) {
+        return respuestas.despedida;
+    }
+
+    // Si no encuentra ninguna palabra clave
+    return respuestas.default;
+}
+
+// Función para simular respuesta de una opción rápida
+function responder(tipo) {
+    let respuesta = '';
+
+    switch(tipo) {
+        case 'precios':
+            respuesta = obtenerRespuesta('precios');
+            break;
+        case 'productos':
+            respuesta = obtenerRespuesta('productos');
+            break;
+        case 'pedir':
+            respuesta = obtenerRespuesta('pedir');
+            break;
+        case 'contacto':
+            respuesta = obtenerRespuesta('contacto');
+            break;
+        default:
+            respuesta = '¿En qué más puedo ayudarte?';
+    }
+
+    agregarRespuestaBot(respuesta);
+}
+
+// Inicializar el chat cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', crearChat);
