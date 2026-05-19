@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Repostería Karen</title>
+    
+    <!-- SEO: Descripción breve de la página para motores de búsqueda -->
+    <meta name="description" content="Repostería artesanal en Colombia. Tortas, cupcakes y postres personalizados para bodas, XV años y eventos especiales. Hechos con amor." />
+    
+    <!-- SEO: Indica a los motores de búsqueda cuál es la página principal -->
+    <link rel="canonical" href="https://dulceamorkaren.com/" />
+    
+    <title>Repostería Karen - Tortas y Cupcakes Artesanales</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -228,7 +235,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop"
-              alt="Torta de chocolate"
+              alt="Torta de chocolate decorada con frutas"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Torta de Chocolate</span>
@@ -238,7 +246,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=400&fit=crop"
-              alt="Cupcakes"
+              alt="Cupcakes de colores con frosting"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Cupcakes</span>
@@ -248,7 +257,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600&h=400&fit=crop"
-              alt="Cupcakes decorados"
+              alt="Cupcakes decorados con sprinkles"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Cupcakes Decorados</span>
@@ -258,7 +268,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=600&h=400&fit=crop"
-              alt="Donas"
+              alt="Donas glaseadas de colores"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Donas Glaseadas</span>
@@ -268,7 +279,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&h=400&fit=crop"
-              alt="Galletas"
+              alt="Galletas artesanales con chispas"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Galletas Artesanales</span>
@@ -278,7 +290,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=400&fit=crop"
-              alt="Pancakes"
+              alt="Pancakes con miel y frutas"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Pancakes</span>
@@ -288,7 +301,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1605807646983-377bc5a76493?w=600&h=400&fit=crop"
-              alt="Torta de cumpleaños"
+              alt="Torta de cumpleaños con velas"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Torta de Cumpleaños</span>
@@ -298,7 +312,8 @@
           <div class="gallery-item">
             <img
               src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=600&h=400&fit=crop"
-              alt="Macarons"
+              alt="Macarons de colores"
+              loading="lazy"
             />
             <div class="gallery-overlay">
               <span>Macarons</span>
@@ -592,10 +607,19 @@
     
     <div class="contact-form-wrapper">
       <form class="contact-form">
-        <input type="text" class="form-input" placeholder="Tu nombre" required>
-        <input type="tel" class="form-input" placeholder="Tu teléfono" required>
-        <input type="email" class="form-input" placeholder="Tu email" required>
-        <textarea class="form-textarea" placeholder="¿Qué necesitas? (torta, cupcakes, evento especial...)" rows="4" required></textarea>
+        <!-- Label oculto visualmente pero disponible para lectores de pantalla -->
+        <label for="nombre" class="visually-hidden">Tu nombre</label>
+        <input type="text" id="nombre" class="form-input" placeholder="Tu nombre" required>
+        
+        <label for="telefono" class="visually-hidden">Tu teléfono</label>
+        <input type="tel" id="telefono" class="form-input" placeholder="Tu teléfono" required>
+        
+        <label for="email" class="visually-hidden">Tu email</label>
+        <input type="email" id="email" class="form-input" placeholder="Tu email" required>
+        
+        <label for="mensaje" class="visually-hidden">¿Qué necesitas?</label>
+        <textarea id="mensaje" class="form-textarea" placeholder="¿Qué necesitas? (torta, cupcakes, evento especial...)" rows="4" required></textarea>
+        
         <button type="submit" class="form-button">Enviar mensaje</button>
       </form>
     </div>
